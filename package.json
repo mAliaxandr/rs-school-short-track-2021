@@ -4,7 +4,8 @@
   "description": "RS School short track tasks 2021",
   "scripts": {
     "test": "npm run lint && mocha",
-    "lint": "node node_modules/eslint/bin/eslint.js ./src"
+    "lint": "node node_modules/eslint/bin/eslint.js ./src",
+    "mocha": "node node_modules/mocha/mocha.js ./src"
   },
   "author": "aorgish, mikhama",
   "license": "MIT",
