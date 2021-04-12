@@ -21,8 +21,48 @@
  *  [1, 1, 1]
  * ]
  */
-function minesweeper(/* matrix */) {
-  throw new Error('Not implemented');
+function minesweeper(matrix) {
+  const result = [];
+  matrix.forEach((i) => {
+    const itemArray = new Array(i.length);
+    itemArray.fill(0);
+    result.push(itemArray);
+  });
+  matrix.forEach((i, indexI) => {
+    i.forEach((item, indexItem) => {
+      if (item) {
+        if (result[indexI][indexItem + 1] === 0 || result[indexI][indexItem + 1] > 0) {
+          result[indexI][indexItem + 1] += 1;
+        }
+        if (result[indexI][indexItem - 1] === 0 || result[indexI][indexItem - 1] > 0) {
+          result[indexI][indexItem - 1] += 1;
+        }
+        if (indexI > 0) {
+          if (result[indexI - 1][indexItem] === 0 || result[indexI - 1][indexItem] > 0) {
+            result[indexI - 1][indexItem] += 1;
+          }
+          if (result[indexI - 1][indexItem + 1] === 0 || result[indexI - 1][indexItem + 1] > 0) {
+            result[indexI - 1][indexItem + 1] += 1;
+          }
+          if (result[indexI - 1][indexItem - 1] === 0 || result[indexI - 1][indexItem - 1] > 0) {
+            result[indexI - 1][indexItem - 1] += 1;
+          }
+        }
+        if (indexI < matrix.length - 1) {
+          if (result[indexI + 1][indexItem] === 0 || result[indexI + 1][indexItem] > 0) {
+            result[indexI + 1][indexItem] += 1;
+          }
+          if (result[indexI + 1][indexItem + 1] === 0 || result[indexI + 1][indexItem + 1] > 0) {
+            result[indexI + 1][indexItem + 1] += 1;
+          }
+          if (result[indexI + 1][indexItem - 1] === 0 || result[indexI + 1][indexItem - 1] > 0) {
+            result[indexI + 1][indexItem - 1] += 1;
+          }
+        }
+      }
+    });
+  });
+  return result;
 }
 
 module.exports = minesweeper;
